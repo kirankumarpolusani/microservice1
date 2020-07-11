@@ -3,23 +3,23 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/kirankumarpolusani/springboot-devops.git'
+                git 'https://github.com/kirankumarpolusani/microservice1.git'
             }
         }
         stage('Package') {
             steps {
                 sh 'mvn clean install -DskipTests'
             }
-        }
+        }mvn
         stage('Docker Build') {
             steps {
-                sh 'docker build -t kirankumarpolusani/repo:v3.0.0 .'
+                sh 'docker build -t kirankumarpolusani/repo:m1v1.0.0 .'
             }
         }
         stage('Docker push') {
             steps {
                 sh "docker login -u kirankumarpolusani -p 1D@ntKn@w"
-                sh "docker push kirankumarpolusani/repo:v3.0.0"
+                sh "docker push kirankumarpolusani/repo:m1v1.0.0"
             }
         }
         stage('Deploy to staging') {
